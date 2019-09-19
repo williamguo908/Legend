@@ -3,7 +3,8 @@
 
   ],
   "buildpacks": [
-
+    { "url": "heroku/nodejs"
+    },
   ],
   "env": {
   },
