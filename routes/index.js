@@ -7,8 +7,11 @@ routes.use('/students', students);
 const users = require('./users');
 routes.use('/register', users);
 
+
 const public = require('./public');
 routes.use('/', public);
+
+
 
 /*
 routes.get('/', function(req, res) {
