@@ -5,7 +5,8 @@ const students = require('./students');
 routes.use('/students', students);
 
 const users = require('./users');
-routes.use('/register', users);
+routes.use('/users', users);
+
 
 
 const public = require('./public');

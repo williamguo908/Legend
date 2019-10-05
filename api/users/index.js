@@ -2,12 +2,17 @@
 const users = require('express').Router();
 
 
-users.get("/", (req, res) => {
+users.get("/login", (req, res) => {
+    res.sendFile(__dirname + "/testForm.html");
+});
+
+
+users.get("/register", (req, res) => {
     res.sendFile(__dirname + "/testForm.html");
 });
 
 const newUser = require('./register')
-users.post("/", newUser);
+users.post("/register", newUser);
 
 
 module.exports = users;
