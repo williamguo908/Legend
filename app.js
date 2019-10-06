@@ -20,7 +20,8 @@ app.use('/', api)
 app.use(express.static('./api/public'));
 
 //Sets up mongoose connection
-mongoose.connect(mongo_uri, { useNewUrlParser: true,  dbName: "Users" } )
+mongoose.connect(mongo_uri, { useNewUrlParser: true,  dbName: "Users", useUnifiedTopology:true } )
+mongoose.set('useCreateIndex', true);
 
 //Gets the default connection
 const db = mongoose.connection;
@@ -32,24 +33,3 @@ db.once('open', () => {
   console.log('connected');
   app.listen(port, () => console.info(`REST API running on port ${port}`));
 });
-
-
-
-/*
-MongoClient.connect(mongo_uri, { useNewUrlParser: true, useUnifiedTopology: true })
-.then(client => {
-  const db = client
-  app.locals.db = db;
-  app.listen(port, () => console.info(`REST API running on port ${port}`));
-}).catch(error => console.error(error));
-*/
-
-
-
-
-
-/*
-app.listen(process.env.PORT || 4000, function(){
-    console.log('Your node js server is listening on port 4000');
-});
-*/
