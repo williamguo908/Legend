@@ -16,7 +16,6 @@ var StudentSchema = new mongoose.Schema({
 });
 
 
-
 module.exports = (req, res) => {
   var Student = mongoose.model('User', StudentSchema, 'User Info');
   Student.find({}, function (err, person) {
