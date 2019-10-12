@@ -4,25 +4,22 @@ var mongoose = require('mongoose');
 var user = require('../../dbs/UserModel.js');
 
 module.exports = (req, res, err) => {
-
   user._firstName = req.body.firstname;
   user._lastName = req.body.lastname;
   user._email = req.body.email;
   user._password = req.body.password;
-
-  //const userDTO = req.body ;
-
-  //createUser(userDTO);
   //console.log(user._firstName + user._lastName +  user._email + user._password );
+
   /*call function here in services layer perform validation, logic etc*/
+  //const userDTO = req.body ;
+  //createUser(userDTO);
+  
   // call the built-in save method to save to the database
   user.save(function (err, user) {
   if (err) return console.error(err);
-    res.redirect('/users/login');
+    res.redirect('/login');
     console.log(user._firstName + " saved to user info collection!");
-    res.send(user._firstName + " saved to user info collection!");
   });
-
 };
 
 

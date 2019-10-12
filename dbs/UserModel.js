@@ -3,8 +3,6 @@ var mongoose = require('mongoose');
 var uniqueValidator = require('mongoose-unique-validator');
 var bcrypt = require('bcrypt');
 
-// Apply the uniqueValidator plugin to userSchema.
-
 // define the schema for new users
 var RegisterSchema = new mongoose.Schema({
   _firstName: {
@@ -18,7 +16,7 @@ var RegisterSchema = new mongoose.Schema({
   },
   _email: {
     type: String,
-    unique: true,
+    unique: true, //unique validator applied here
     required: true
   },
   _password: {
@@ -42,9 +40,13 @@ RegisterSchema.pre('save', function (next) {
   })
 });
 
+// Apply the uniqueValidator plugin to userSchema.
+RegisterSchema.plugin(uniqueValidator);
 
 //Creating model NewUser from RegisterSchema
-RegisterSchema.plugin(uniqueValidator);
 var NewUser = mongoose.model('New User', RegisterSchema, 'User Info');
+
+//Instantiating user from NewUser
 var user = new NewUser();
+
 module.exports = user;

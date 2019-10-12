@@ -9,7 +9,6 @@ const api = require('./api')
 const port = process.env.PORT
 const mongo_uri = process.env.MONGODB_URI
 var mongoose = require('mongoose');
-//const MongoClient = require('mongodb').MongoClient;
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
