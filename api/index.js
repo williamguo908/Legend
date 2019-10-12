@@ -5,10 +5,10 @@ const admin = require("./admin");
 routes.use('/admin', admin);
 
 const students = require('./students');
-routes.use('/students', students);
+routes.use('/student', students);
 
-const users = require('./users');
-routes.use('/users', users);
+const user = require('./user');
+routes.use('/user', user);
 
 const public = require('./public');
 routes.use('/', public);
