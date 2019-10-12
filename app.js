@@ -32,3 +32,5 @@ db.once('open', () => {
   console.log('connected');
   app.listen(port, () => console.info(`REST API running on port ${port}`));
 });
+
+app.listen(port, () => console.info(`REST API running on port ${port}`));
