@@ -16,7 +16,7 @@ var UserSchema = new mongoose.Schema({
   }
 }, {collection: 'Login'});
 
-mongoose.connect('mongodb+srv://test:test@cluster0-nuq4r.mongodb.net/test?retryWrites=true&w=majority');
+//mongoose.connect('mongodb+srv://test:test@cluster0-nuq4r.mongodb.net/test?retryWrites=true&w=majority');
 // authentication
 UserSchema.statics.authenticate = function (username, password, callback) {
   User.findOne({ username: username })
