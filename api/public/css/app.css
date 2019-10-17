@@ -128,6 +128,8 @@ a {
   position: relative;
   height: 48px;
   z-index: 2;
+  display: flex;
+  justify-content: space-between;
 }
 
 .hero__top:before {
@@ -142,6 +144,32 @@ a {
   -ms-transform: skewX(-36deg);
   transform: skewX(-36deg);
   z-index: -2;
+}
+
+.hero__top__element{
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.hero__top__text{
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  margin-left: 7px;
+  margin-right: 20px;
+  color: #3A3F48;
+  float: left;
+}
+
+.hero__top__img{
+  margin-left: 7px;
+  margin-right: 7px;
+  float:left;
 }
 
 .hero__container {
