@@ -25,7 +25,7 @@ public.post("/register", [
     check('email', 'Your email is not valid').not().isEmpty().trim().escape().isEmail().normalizeEmail(),
     check('password', 'Your password must be at least 8 characters').not().isEmpty().trim().escape().isLength({min: 8}),
     check('confirmPassword', 'Passwords do not match').custom((value, {req}) => (value === req.body.password)),
-    check('code').trim().escape().optional(),
+    check('code').not().isEmpty().trim().escape().withMessage('Please enter a register code.'),
   ], function (req, res, next) {
     const errors = validationResult(req);
     console.log(req.body);
