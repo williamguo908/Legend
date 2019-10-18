@@ -1,19 +1,20 @@
 
 var mongoose = require('mongoose');
-//require('express-validator');
 var user = require('../../dbs/UserModel.js');
 
 module.exports = (req, res, err) => {
+  user._id = req.body.code;
   user._firstName = req.body.firstname;
   user._lastName = req.body.lastname;
   user._email = req.body.email;
   user._password = req.body.password;
+
   //console.log(user._firstName + user._lastName +  user._email + user._password );
 
   /*call function here in services layer perform validation, logic etc*/
   //const userDTO = req.body ;
   //createUser(userDTO);
-  
+
   // call the built-in save method to save to the database
   user.save(function (err, user) {
   if (err) return console.error(err);

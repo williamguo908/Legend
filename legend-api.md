@@ -4,13 +4,10 @@
 (Initial resource endpoints for User and Admin accounts)
 
 # User
-**GET** */user/profile/:id* 
+**GET** */user/profile/:id*
 <p>Gets user dashboard taking id as parameter</p>
 
 **PUT**
-
-**POST** */user/student*
-<p>Adds new student to the database</p>
 
 **GET** */user/belt/:stuId*
 <p>Get belt standing of a particular student taking id as parameter</p>
@@ -29,8 +26,11 @@
 
 
 # Admin
-**GET** */admin/profile/:id* 
+**GET** */admin/profile/:id*
 <p>Gets admin dashboard taking id as parameter</p>
+
+**POST** */admin/student*
+<p>Adds new student to the database</p>
 
 **GET** */admin/class*
 <p>Gets list of all classes</p>
@@ -74,8 +74,3 @@
 
  **GET** */admin/student/hidden-notes/:stuId*
 <p>Gets hidden notes for a particular student</p>
- 
-
- 
-
-
