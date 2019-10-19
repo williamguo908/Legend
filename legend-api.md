@@ -29,7 +29,7 @@ will increment their attendanceCount</p>
 
 
 
-<p>***Note sure about these yet, some will probably not be needed***</p>
+#*Note sure about these yet, some will probably not be needed*
 **GET** */admin/profile/:id*
 <p>Gets admin dashboard taking id as parameter</p>
 
@@ -70,7 +70,7 @@ will increment their attendanceCount</p>
 
 
 # User
-<p>***Not sure about all these yet..***<p>
+#*Not sure about all these yet..*
 **GET** */user/profile/:id*
 <p>Gets user dashboard taking id as parameter</p>
 
