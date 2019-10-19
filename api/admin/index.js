@@ -1,6 +1,11 @@
 
 const admin = require('express').Router();
-//require functionality from users 
+const validator = require("../../services/validator.js");
+//require functionality from users
+
+const newStudent = require('./student')
+admin.post("/student", validator.addStudent, newStudent);
+
 
 admin.get("/profile/:id", (req, res)=> {
   res.send("admin home page")
