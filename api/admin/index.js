@@ -1,5 +1,6 @@
 
 const admin = require('express').Router();
+//require functionality from users 
 
 admin.get("/profile/:id", (req, res)=> {
   res.send("admin home page")

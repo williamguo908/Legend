@@ -1,27 +1,60 @@
 
 var mongoose = require('mongoose');
-var user = require('../../dbs/UserModel.js');
+var newuser = require('../../dbs/UserModel.js');
+var AccessUser = require('../../dbs/AccessModel.js');
+const { validationResult } = require('express-validator');
 
-module.exports = (req, res, err) => {
-  user._id = req.body.code;
-  user._firstName = req.body.firstname;
-  user._lastName = req.body.lastname;
-  user._email = req.body.email;
-  user._password = req.body.password;
 
-  //console.log(user._firstName + user._lastName +  user._email + user._password );
+module.exports = (req, res, next) => {
+  console.log("Validating data from register form..");
+  const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        console.log("Invalid data..." + errors);
+        return res.status(422).json({ errors: errors.array() });
+    }
 
+  newuser._id = req.body.code;
+  newuser._firstName = req.body.firstname;
+  newuser._lastName = req.body.lastname;
+  newuser._email = req.body.email;
+  newuser._password = req.body.password;
+
+  //newuser = req.body
+
+  console.log("Register form info:")
+  console.log("firstname: " + newuser._firstName);
+  console.log("lastname " + newuser._lastName);
+  console.log("email " + newuser._email);
+  console.log("unhashed pw " + newuser._password);
+  console.log("code (id) " + newuser._id);
+  console.log(" ");
+
+  AccessUser.findOne({_accessCode: req.body.code},(function (err, user){
+    console.log("Now, must check if access code " + req.body.code + " is in database..");
+    if (err || !user){
+      console.log("err " + err);
+      console.log("user " + user);
+      console.log("Errors present or code does not exist..");
+      console.log("Redirecting back to register form..");
+      return res.redirect('/register');
+    }
+      console.log("Access code found!");
+      newuser.save(function (err, newuser) {
+        console.log("Saving new user...")
+        if (err){
+          console.log("Errors during save..redirecting back to register form...")
+          return res.redirect('/register');
+        }
+        else {
+          res.redirect('/login');
+          console.log("Success..." + newuser._firstName + " saved to user info collection!");
+        }
+      });
+  }));
+};
   /*call function here in services layer perform validation, logic etc*/
   //const userDTO = req.body ;
   //createUser(userDTO);
-
-  // call the built-in save method to save to the database
-  user.save(function (err, user) {
-  if (err) return console.error(err);
-    res.redirect('/login');
-    console.log(user._firstName + " saved to user info collection!");
-  });
-};
 
 
 
