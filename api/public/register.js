@@ -13,6 +13,7 @@ module.exports = (req, res, next) => {
         return res.status(422).json({ errors: errors.array() });
     }
 
+  console.log("Getting registration data..");
   newuser._id = req.body.code;
   newuser._firstName = req.body.firstname;
   newuser._lastName = req.body.lastname;
@@ -21,7 +22,7 @@ module.exports = (req, res, next) => {
 
   //newuser = req.body
 
-  console.log("Register form info:")
+  console.log("Register form info:");
   console.log("firstname: " + newuser._firstName);
   console.log("lastname " + newuser._lastName);
   console.log("email " + newuser._email);
@@ -47,7 +48,7 @@ module.exports = (req, res, next) => {
         }
         else {
           res.redirect('/login');
-          console.log("Success..." + newuser._firstName + " saved to user info collection!");
+          console.log("Success..." + newuser._firstName + " saved to 'Login' collection!");
         }
       });
   }));

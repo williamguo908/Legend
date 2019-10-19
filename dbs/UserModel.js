@@ -56,7 +56,7 @@ RegisterSchema.pre('save', function (next) {
 RegisterSchema.plugin(uniqueValidator);
 
 //Creating model NewUser from RegisterSchema
-var NewUser = mongoose.model('New User', RegisterSchema, 'User Info');
+var NewUser = mongoose.model('New User', RegisterSchema, 'Login');
 
 //Instantiating user from NewUser
 var user = new NewUser();
