@@ -3,24 +3,24 @@
 
 (Initial resource endpoints for User and Admin accounts)
 # Admin
-**GET** */admin/student*
+- [] **GET** */admin/student*
 <p>Gets list of all students</p>
 <p>Gets first name, last name, belt, classes attended for all students</p>
 
-**GET** */admin/student/:id*
+- [] **GET** */admin/student/:id*
 <p>Gets view of student with particular id</p>
 <p>Gets first name, last name, belt, classes attended, public and private notes of a student</p>
 
-**POST** */admin/student*
+ - [] **POST** */admin/student*
 <p>Adds new student to the database</p>
 <p>Adds first name, last name, age from dob, address, emergency contact, phone number, belt,
 and unique 6 digit access code</p>
 
-**GET** */admin/class*
+- [] **GET** */admin/class*
 <p>Gets list of all classes</p>
 <p>Gets class name, ages, and total number of students enrolled in the class for each class (there are 9 classes)</p>
 
-**GET** */admin/attendance/:classId*
+- [] **GET** */admin/attendance/:classId*
 <p>Gets class list for attendance taking</p>
 <p>Gets list of students to be checked off for attending that class. For students present,
 will increment their attendanceCount</p>
