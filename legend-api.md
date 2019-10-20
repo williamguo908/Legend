@@ -11,7 +11,7 @@
 <p>Gets view of student with particular id</p>
 <p>Gets first name, last name, belt, classes attended, public and private notes of a student</p>
 
- - [ ] **POST** */admin/student*
+ - [x] **POST** */admin/student*
 <p>Adds new student to the database</p>
 <p>Adds first name, last name, age from dob, address, emergency contact, phone number, belt,
 and unique 6 digit access code</p>
