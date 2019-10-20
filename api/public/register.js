@@ -1,7 +1,7 @@
 
 var mongoose = require('mongoose');
 var newuser = require('../../dbs/UserModel.js');
-var AccessUser = require('../../dbs/AccessModel.js');
+var Student = require('../../dbs/StudentModel.js');
 const { validationResult } = require('express-validator');
 
 
@@ -14,7 +14,8 @@ module.exports = (req, res, next) => {
     }
 
   console.log("Getting registration data..");
-  newuser._id = req.body.code;
+  //newuser._id = req.body.code;
+  newuser._stuId = req.body.code;
   newuser._firstName = req.body.firstname;
   newuser._lastName = req.body.lastname;
   newuser._email = req.body.email;
@@ -27,21 +28,21 @@ module.exports = (req, res, next) => {
   console.log("lastname " + newuser._lastName);
   console.log("email " + newuser._email);
   console.log("unhashed pw " + newuser._password);
-  console.log("code (id) " + newuser._id);
+  //console.log("code (id) " + newuser._id);
+  console.log("stu_id " + newuser._stuId);
   console.log(" ");
 
-  AccessUser.findOne({_accessCode: req.body.code},(function (err, user){
+  Student.findOne({_id: req.body.code},(function (err, user){
     console.log("Now, must check if access code " + req.body.code + " is in database..");
     if (err || !user){
       console.log("err " + err);
-      console.log("user " + user);
-      console.log("Errors present or code does not exist..");
+      console.log("Errors present or your student profile has not been created yet..");
       console.log("Redirecting back to register form..");
       return res.redirect('/register');
     }
-      console.log("Access code found!");
+      console.log("Access code found! Your student profile has been previously created.");
       newuser.save(function (err, newuser) {
-        console.log("Saving new user...")
+        console.log(err);
         if (err){
           console.log("Errors during save..redirecting back to register form...")
           return res.redirect('/register');

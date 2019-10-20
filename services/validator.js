@@ -6,7 +6,7 @@ exports.createUser = [check('firstname').not().isEmpty().trim().escape().withMes
   check('email', 'Your email is not valid').not().isEmpty().trim().escape().isEmail().normalizeEmail(),
   check('password', 'Your password must be at least 8 characters').not().isEmpty().trim().escape().isLength({min: 8}),
   check('confirmPassword', 'Passwords do not match').custom((value, {req}) => (value === req.body.password)),
-  check('code').not().isEmpty().trim().escape().isLength({min: 6, max:6}).withMessage('Please enter a register code.')];
+  check('code').not().isEmpty().trim().escape().withMessage('Please enter a register code.')];
 
 
 exports.addStudent = [check('firstname').not().isEmpty().trim().escape().withMessage('Please enter a first name.'),

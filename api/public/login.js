@@ -1,7 +1,7 @@
 
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
-
+/*
 // define the username and password constraints
 var UserSchema = new mongoose.Schema({
   username: {
@@ -53,8 +53,9 @@ UserSchema.statics.authenticate = function (username, password, callback) {
     user.password = hash;
     next();
   })
-});*/
+});
 
 var User = mongoose.model('User', UserSchema, 'Login');
 //mongoose.model();
 module.exports = User;
+*/

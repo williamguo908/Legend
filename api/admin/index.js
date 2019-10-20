@@ -3,6 +3,12 @@ const admin = require('express').Router();
 const validator = require("../../services/validator.js");
 //require functionality from users
 
+
+admin.get("/student", (req, res) => {
+    res.sendFile(__dirname + "/testAddForm.html");
+});
+
+
 const newStudent = require('./student')
 admin.post("/student", validator.addStudent, newStudent);
 
@@ -19,7 +25,7 @@ admin.get("/class/:id", (req, res) => {
     res.send("view class with particular id");
 });
 
-admin.get("/student", (req, res) => {
+admin.get("/students", (req, res) => {
   res.send("list all students");
 });
 
