@@ -20,9 +20,10 @@ app.use('/', api)
 
 app.use(express.static('./api/public'));
 
-//Sets up mongoose connection
+//Sets up mongoose connection with parameters to get rid of deprecation warnings
 mongoose.connect(mongo_uri, { useNewUrlParser: true,  dbName: "Users", useUnifiedTopology:true } )
 mongoose.set('useCreateIndex', true);
+mongoose.set('useFindAndModify', false);
 
 //Gets the default connection
 const db = mongoose.connection;
