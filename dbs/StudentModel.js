@@ -1,5 +1,7 @@
 
 var mongoose = require('mongoose');
+var ClassSchema = require('./ClassModel.js')
+var AccountSchema = require('./UserModel.js')
 
 // define the schema for new students
 var StudentSchema = new mongoose.Schema({
@@ -27,6 +29,10 @@ var StudentSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  _account: {
+    type: AccountSchema,
+    default: () => ({})
+  },
   _belt: {
     type: String,
     required: true
@@ -39,8 +45,27 @@ var StudentSchema = new mongoose.Schema({
     type: String,
     default: ''
   },
+  _classes: [ ClassSchema ],
+  _leadershipTeam: {
+    type: Boolean,
+    default: false
+  },
+  _competitionTeam: {
+    type: Boolean,
+    default: false
+  }
 });
 
+
+StudentSchema.pre("save",function(next) {
+  if (this._classes.length == 0)
+    this._classes.push({
+      "className": "Little Legends",
+      "classesAttended": 0,
+      "totalClasses": 36
+    })
+  next();
+});
 
 
 // Apply the uniqueValidator plugin to StudentSchema.

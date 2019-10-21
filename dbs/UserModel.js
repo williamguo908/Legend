@@ -4,29 +4,30 @@ var uniqueValidator = require('mongoose-unique-validator');
 var bcrypt = require('bcrypt');
 
 // define the schema for new users
-var RegisterSchema = new mongoose.Schema({
+var AccountSchema = new mongoose.Schema({
   _stuId: {
     type: String,
-    unique: true,
-    required: true
+    unique: true
+    //required: true
   },
   _firstName: {
     type: String,
-    required: true,
+    default: 'fjek',
+    //required: true,
     trim: true
   },
   _lastName: {
     type: String,
-    required: true
+    //required: true
   },
   _email: {
     type: String,
     unique: true, //unique validator applied here
-    required: true
+    //required: true
   },
   _password: {
     type: String,
-    required: true
+    //required: true
   }
 });
 
@@ -51,9 +52,9 @@ RegisterSchema.pre('save', function (next) {
   });
 });
 */
-
+/*
 //hashing a password before saving it to the database
-RegisterSchema.pre('save', function (next) {
+AccountSchema.pre('save', function (next) {
   console.log("pre save....")
   var newuser = this;
   bcrypt.hash(newuser._password, 10, function (err, hash) {
@@ -65,14 +66,14 @@ RegisterSchema.pre('save', function (next) {
     next();
   })
 });
-
+*/
 // Apply the uniqueValidator plugin to userSchema.
-RegisterSchema.plugin(uniqueValidator);
+//AccountSchema.plugin(uniqueValidator);
 
 //Creating model NewUser from RegisterSchema
-var NewUser = mongoose.model('New User', RegisterSchema, 'Login')
+//var NewAccount = mongoose.model('New Account', AccountSchema)
 
 //Instantiating user from NewUser
-var user = new NewUser();
+//var user = new NewUser();
 
-module.exports = user
+module.exports = AccountSchema
