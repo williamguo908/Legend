@@ -1,6 +1,6 @@
 
+//Example to show how a simple query works with Mongoose schemas
 var mongoose = require('mongoose');
-
 
 // define the
 var StudentSchema = new mongoose.Schema({

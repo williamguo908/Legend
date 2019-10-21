@@ -9,19 +9,21 @@ const api = require('./api')
 const port = process.env.PORT
 const mongo_uri = process.env.MONGODB_URI
 var mongoose = require('mongoose');
-//const MongoClient = require('mongodb').MongoClient;
 var bodyParser = require('body-parser');
+//const flash = require('express-flash-notification');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+//app.use(flash(app));
 
 // Connect routes to app.js
 app.use('/', api)
 
 app.use(express.static('./api/public'));
 
-//Sets up mongoose connection
+//Sets up mongoose connection with parameters to get rid of deprecation warnings
 mongoose.connect(mongo_uri, { useNewUrlParser: true,  dbName: "Users", useUnifiedTopology:true } )
 mongoose.set('useCreateIndex', true);
+mongoose.set('useFindAndModify', false);
 
 //Gets the default connection
 const db = mongoose.connection;
@@ -31,5 +33,7 @@ const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
   console.log('connected');
-  app.listen(port, () => console.info(`REST API running on port ${port}`));
+  //app.listen(port, () => console.info(`REST API running on port ${port}`));
 });
+
+app.listen(port, () => console.info(`REST API running on port ${port}`));

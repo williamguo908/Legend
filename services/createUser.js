@@ -1,4 +1,4 @@
-//logic
+//will attempt to implement something like this...
 /*
 const {check, validationResult} = require('express-validator/check');
 // example logic tied to 'register' in routing layer
