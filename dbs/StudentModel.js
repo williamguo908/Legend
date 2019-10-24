@@ -13,7 +13,7 @@ var StudentSchema = new mongoose.Schema({
     //required: true
   },
   _dob: { // may not be able to store this in actuality due to it being private data
-    type: String,
+    type: Number, //for now...
     //required: true
   },
   _address: {
@@ -51,18 +51,29 @@ var StudentSchema = new mongoose.Schema({
   }
 });
 
-/*
+
 StudentSchema.pre("save",function(next) {
   //if student age is between a value and belt is whatever color, Then
   // check the belt+age combination and push the student to the appropriate class
-  this._classes.push({
-    "className": "Little Legends",
-    "classesAttended": 0,
-    "totalClasses": 36
-  })
+  if (this._classes.length ==0){
+    if (this._dob >=3 && this._dob <=4){
+      this._classes.push({
+        "className": "Little Legends",
+        "classesAttended": 0,
+        "totalClasses": 36
+      })
+    }
+    else {
+      this._classes.push({
+        "className": "Legends Junior",
+        "classesAttended": 0,
+        "totalClasses": 36
+      })
+    }
+  }
   next();
 });
-*/
+
 
 
 // Apply the uniqueValidator plugin to StudentSchema.

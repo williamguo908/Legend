@@ -26,7 +26,7 @@ var ClassSchema = new mongoose.Schema({
   belt: {
     type: String
   },
-  enrolled: {
+  isEnrolled: {
     type: Boolean
   },
   test: [TestSchema]

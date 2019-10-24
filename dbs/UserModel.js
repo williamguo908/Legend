@@ -16,7 +16,7 @@ var AccountSchema = new mongoose.Schema({
   },
   _email: {
     type: String,
-    unique: true, //unique validator applied here
+    //unique: true, //unique validator applied here
     //required: true
   },
   _password: {

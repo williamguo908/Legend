@@ -2,20 +2,10 @@
 var mongoose = require('mongoose');
 var NewStudent = require('../../dbs/UserModel.js');
 const { validationResult } = require('express-validator');
-var newStudent = new NewStudent();
 
-/*
-StudentSchema.pre("save",function(next) {
-  this._students.push({
-    "className": "Little Legends",
-    "classesAttended": 0,
-    "totalClasses": 36
-  })
-  next();
-});
-*/
 
 module.exports = (req, res, next) => {
+  var newStudent = new NewStudent();
   //Check if valid data was received from 'add student' form
   console.log("Validating data from add student form..");
   //If errors return Errors
