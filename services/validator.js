@@ -16,3 +16,6 @@ exports.addStudent = [check('firstname').not().isEmpty().trim().escape().withMes
   check('contactName', 'Please enter a contact name.').not().isEmpty().trim().escape(),
   check('contactPhone').not().isEmpty().trim().escape().isNumeric().isLength({min: 10, max:10}).withMessage('Please enter a 10 digit phone number.'),
   check('belt').not().isEmpty().trim().escape().withMessage("Please select a belt.")];
+
+
+  exports.resetPassword = [check('email', 'Your email is not valid').not().isEmpty().trim().escape().isEmail().normalizeEmail()];

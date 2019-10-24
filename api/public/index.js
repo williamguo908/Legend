@@ -15,6 +15,14 @@ public.get("/register", (req, res) => {
     res.sendFile(__dirname + "/register.html");
 });
 
+public.get("/reset-password", (req, res) => {
+    res.sendFile(_dirname + "/reset-password.html");
+});
+
+
+const resetUser = require('./resetPassword')
+public.post("/reset-password", validator.resetPassword, resetUser);
+
 /*
 const authUser = require('./login')
 public.post("/login", authUser);

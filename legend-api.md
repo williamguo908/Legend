@@ -14,7 +14,7 @@
  - [x] **POST** */admin/student*
 <p>Adds new student to the database</p>
 <p>Adds first name, last name, age from dob, address, emergency contact, phone number, belt,
-and unique 6 digit access code</p>
+and unique access code</p>
 
 - [ ] **GET** */admin/class*
 <p>Gets list of all classes</p>

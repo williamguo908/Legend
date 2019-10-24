@@ -1,3 +1,8 @@
+
+
+//exports.hashPassword =
+
+
 //will attempt to implement something like this...
 /*
 const {check, validationResult} = require('express-validator/check');

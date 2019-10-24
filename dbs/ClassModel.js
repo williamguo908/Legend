@@ -4,7 +4,6 @@ var mongoose = require('mongoose');
 var TestSchema = new mongoose.Schema({
     testPassed: Boolean,
     testComments: String,
-    beltPromotedTo: String
     //testDate
 });
 
@@ -27,10 +26,11 @@ var ClassSchema = new mongoose.Schema({
   belt: {
     type: String
   },
+  enrolled: {
+    type: Boolean
+  },
   test: [TestSchema]
 });
-
-
 
 //Creating model NewUser from RegisterSchema
 //var NewClass = mongoose.model('New Account', ClassSchema, 'User Info')

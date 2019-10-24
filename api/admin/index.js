@@ -17,9 +17,9 @@ admin.get("/profile/:id", (req, res)=> {
   res.send("admin home page")
 });
 
-admin.get("/class", (req, res) => {
-    res.send("list all classes");
-});
+const classes = require('./allClasses');
+admin.get("/class", classes);
+
 
 admin.get("/class/:id", (req, res) => {
     res.send("view class with particular id");

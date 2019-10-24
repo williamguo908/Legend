@@ -1,41 +1,36 @@
 
 var mongoose = require('mongoose');
 var ClassSchema = require('./ClassModel.js')
-var AccountSchema = require('./UserModel.js')
 
 // define the schema for new students
 var StudentSchema = new mongoose.Schema({
-  _firstName: {
+  _stuFirstName: {
     type: String,
-    required: true
+    //required: true
   },
-  _lastName: {
+  _stuLastName: {
     type: String,
-    required: true
+    //required: true
   },
   _dob: { // may not be able to store this in actuality due to it being private data
     type: String,
-    required: true
+    //required: true
   },
   _address: {
     type: String,
-    required: true
+    //required: true
   },
   _contactName: {
     type: String,
-    required: true
+    //required: true
   },
   _contactPhone: {
     type: String,
-    required: true
-  },
-  _account: {
-    type: AccountSchema,
-    default: () => ({})
+    //required: true
   },
   _belt: {
     type: String,
-    required: true
+    //required: true
   },
   _publicNotes: {
     type: String,
@@ -56,25 +51,27 @@ var StudentSchema = new mongoose.Schema({
   }
 });
 
-
+/*
 StudentSchema.pre("save",function(next) {
-  if (this._classes.length == 0)
-    this._classes.push({
-      "className": "Little Legends",
-      "classesAttended": 0,
-      "totalClasses": 36
-    })
+  //if student age is between a value and belt is whatever color, Then
+  // check the belt+age combination and push the student to the appropriate class
+  this._classes.push({
+    "className": "Little Legends",
+    "classesAttended": 0,
+    "totalClasses": 36
+  })
   next();
 });
+*/
 
 
 // Apply the uniqueValidator plugin to StudentSchema.
 //StudentSchema.plugin(uniqueValidator);
 
 //Creating model NewUser from RegisterSchema
-var NewStudent = mongoose.model('New Student', StudentSchema, 'User Info')
+//var NewStudent = mongoose.model('New Student', StudentSchema, 'User Info')
 
 //Instantiating user from NewUser
 //var newStudent = new NewStudent();
 
-module.exports = NewStudent
+module.exports = StudentSchema
