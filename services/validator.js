@@ -19,3 +19,6 @@ exports.addStudent = [check('firstname').not().isEmpty().trim().escape().withMes
 
 
   exports.resetPassword = [check('email', 'Your email is not valid').not().isEmpty().trim().escape().isEmail().normalizeEmail()];
+
+  exports.authenticate = [check('email', 'Your email is not valid').not().isEmpty().trim().escape().isEmail().normalizeEmail(),
+    check('password', 'Your password must be at least 8 characters').not().isEmpty().trim().escape().isLength({min: 8})];

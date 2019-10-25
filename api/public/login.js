@@ -1,46 +1,31 @@
 
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
-/*
-// define the username and password constraints
-var UserSchema = new mongoose.Schema({
-  username: {
-    type: String,
-    unique: true,
-    required: true,
-    trim: true
-  },
-  password: {
-    type: String,
-    required: true,
-  }
-}, {collection: 'Login'});
+var User = require('../../dbs/UserModel.js');
+var bcrypt = require('bcrypt');
+const { validationResult } = require('express-validator');
 
-//mongoose.connect('mongodb+srv://test:test@cluster0-nuq4r.mongodb.net/test?retryWrites=true&w=majority');
-// authentication
-UserSchema.statics.authenticate = function (username, password, callback) {
-  User.findOne({ username: username })
-    .exec(function (err, user) {
-      if (err) {
-        return callback(err)
-      } else if (!user) { // if user is not found
-        console.log("no registered user found");
-        var err = new Error('User not found.');
-        err.status = 401;
-        return callback(err);
-      }
-      // user found now check the password
-      bcrypt.compare(password, user.password, function (err, result) {
-        if (result === true) {
-          console.log("User found");
-          return callback(null, user);
-        } else {
-          console.log("User not found");
-          return callback();
-        }
-      })
-    });
-}
+
+module.exports = (req, res, next) => {
+  console.log("Validating data from login form..");
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+      console.log("Invalid data..." + errors);
+      return res.status(422).json({ errors: errors.array() });
+  }
+  console.log("Checking credentials..");
+  var email = req.body.email;
+  var password = req.body.password;
+  User.authenticate(email, password, function(err, user) {
+    if (err || !user) {
+      return res.redirect('/login');
+    }
+      res.redirect("Account authenticated.")
+  });
+};
+
+
+
 
 // password needs to be hashed in order for it to match the db
 /*UserSchema.pre('save', function (next) {
@@ -56,6 +41,6 @@ UserSchema.statics.authenticate = function (username, password, callback) {
 });
 
 var User = mongoose.model('User', UserSchema, 'Login');
-//mongoose.model();
+
 module.exports = User;
 */

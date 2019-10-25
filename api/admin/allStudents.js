@@ -16,13 +16,13 @@ module.exports = (req, res, next) => {
         $match : { '_students._classes.isEnrolled' : true } //filter out classes for which that student is currently enrolled
        },
       {
-        $project:
+        $project: //project for selecting what fields you want
         {
            _id: '$_students._id',
            firstName: '$_students._stuFirstName',
            lastName: '$_students._stuLastName',
            belt: '$_students._belt',
-           totalAttended: { $sum: '$_students._classes.classesAttended' }, //(use for list of students view)
+           totalAttended: { $sum: '$_students._classes.classesAttended' },
            totalClasses: {$sum: '$_students._classes.totalClasses' }
         }
     }

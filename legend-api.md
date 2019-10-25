@@ -1,6 +1,12 @@
 ﻿
 ﻿# Documentation
 
+
+
+
+
+
+
 (Initial resource endpoints for User and Admin accounts)
 # Admin
 - [x] **GET** */admin/student*
@@ -25,7 +31,7 @@ and unique access code</p>
 <p>Gets list of students to be checked off for attending that class. For students present,
 will increment their attendanceCount</p>
 
-- [x] **POST** */admin/attendance/:className*
+- [ ] **POST** */admin/attendance/:className*
 <p>Record attendance for list of students in a class</p>
 <p>For students present, will increment their attendanceCount</p>
 

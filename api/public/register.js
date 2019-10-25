@@ -2,10 +2,10 @@
 var mongoose = require('mongoose');
 var User = require('../../dbs/UserModel.js');
 const { validationResult } = require('express-validator');
-var user = new User();
 var bcrypt = require('bcrypt');
 
 module.exports = (req, res, next) => {
+  var user = new User();
   console.log("Validating data from register form..");
   const errors = validationResult(req);
     if (!errors.isEmpty()) {

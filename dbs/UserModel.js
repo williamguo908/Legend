@@ -4,6 +4,7 @@ var uniqueValidator = require('mongoose-unique-validator');
 var bcrypt = require('bcrypt');
 var StudentSchema = require('./StudentModel.js');
 
+
 var AccountSchema = new mongoose.Schema({
   _firstName: {
     type: String,
@@ -34,9 +35,9 @@ var AccountSchema = new mongoose.Schema({
 });
 
 
+
 AccountSchema.pre('save', function(next) {
   const user = this;
-  //console.log('pre save...');
   if (!user.isModified('_password')) {
     console.log("password not modified..skip hashing")
     return next();
@@ -53,8 +54,30 @@ AccountSchema.pre('save', function(next) {
 });
 
 
-
-
+AccountSchema.statics.authenticate = function (email, password, callback) {
+  var User = this;
+  User.findOne({ _email: email })
+    .exec(function (err, user) {
+      if (err) {
+        return callback(err)
+      } else if (!user) { // if user is not found
+        console.log("no registered user found");
+        var err = new Error('User not found.');
+        err.status = 401;
+        return callback(err);
+      }
+      // user found now check the password
+      bcrypt.compare(password, user._password, function (err, result) {
+        if (result === true) {
+          console.log("User found");
+          return callback(null, user);
+        } else {
+          console.log("User not found");
+          return callback();
+        }
+      })
+    });
+}
 
 
 
@@ -142,6 +165,6 @@ AccountSchema.pre('save', function (next) {
 //Instantiating user from NewUser
 //var user = new NewUser();
 
-var NewAccount  = mongoose.model('New Account', AccountSchema, 'User Info')
+var Account  = mongoose.model('New Account', AccountSchema, 'User Info')
 
-module.exports = NewAccount;
+module.exports = Account;

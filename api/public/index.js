@@ -23,10 +23,10 @@ public.get("/reset-password", (req, res) => {
 const resetUser = require('./resetPassword')
 public.post("/reset-password", validator.resetPassword, resetUser);
 
-/*
+
 const authUser = require('./login')
-public.post("/login", authUser);
-*/
+public.post("/login", validator.authenticate, authUser);
+
 
 const newUser = require('./register')
 public.post("/register", validator.createUser, newUser);
