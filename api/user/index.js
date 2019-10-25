@@ -2,9 +2,8 @@
 const user = require('express').Router();
 const {check, validationResult} = require('express-validator');
 
-user.get("/profile/:id", (req, res) => {
-  res.send("user " + req.params.id + " home page");
-});
+const profile = require('./userProfile');
+user.get("/profile/:id", profile);
 
 user.post("/student", (req, res) => {
   //add new student to the database

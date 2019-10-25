@@ -1,10 +1,31 @@
 ﻿
 ﻿# Documentation
 
+- [x] **GET** */index*
 
+- [x] **GET** */register*
 
+- [x] **GET** */login*
 
+- [x] **GET** */contact-us*
 
+- [ ] **GET** */programs*
+
+- [x] **POST** */register*
+<p>User registering account</p>
+<p>Inputs user email, password, first name, last name and checks register code.</p>
+
+- [x] **POST** */login*
+<p>Authenticates user account when user provides email and password</p>
+
+- [ ] **POST** */logout*
+<p>Authenticates user account when user provides email and password</p>
+
+- [ ] **POST** */reset-password*
+<p>Sends link to valid registered email to reset password.</p>
+
+- [ ] **POST** */contact-us*
+<p>Sends email to admin and provides copy of email to one submitting.</p>
 
 
 (Initial resource endpoints for User and Admin accounts)

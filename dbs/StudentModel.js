@@ -13,8 +13,8 @@ var StudentSchema = new mongoose.Schema({
     type: String,
     //required: true
   },
-  _dob: { // may not be able to store this in actuality due to it being private data
-    type: Number, //for now...
+  _dob: { 
+    type: Date,
     //required: true
   },
   _address: {

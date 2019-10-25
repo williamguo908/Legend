@@ -20,7 +20,8 @@ module.exports = (req, res, next) => {
     if (err || !user) {
       return res.redirect('/login');
     }
-      res.redirect("Account authenticated.")
+      //res.send("Account authenticated.")
+      res.redirect("/user/profile/"+user.id);
   });
 };
 

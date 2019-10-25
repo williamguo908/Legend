@@ -20,7 +20,6 @@ module.exports = (req, res, next) => {
         $group:
         {
            _id: '$_students._classes.className',
-           //totalAttended: { $sum: '$_students._classes.classesAttended' }, (use for list of students view)
            numberEnrolled: { $sum: 1}
         }
     }
