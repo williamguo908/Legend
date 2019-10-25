@@ -33,7 +33,8 @@ const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
   console.log('connected');
-  //app.listen(port, () => console.info(`REST API running on port ${port}`));
+  app.listen(port, () => console.info(`REST API running on port ${port}`)); //comment out this line if not allowing access to db
 });
 
-app.listen(port, () => console.info(`REST API running on port ${port}`));
+//Comment out line below to test on heroku and make db connection
+//app.listen(port, () => console.info(`REST API running on port ${port}`));
