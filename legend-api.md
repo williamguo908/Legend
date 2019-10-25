@@ -20,10 +20,14 @@ and unique access code</p>
 <p>Gets list of all classes</p>
 <p>Gets class name, ages, and total number of students enrolled in the class for each class (there are 9 classes)</p>
 
-- [ ] **GET** */admin/attendance/:className*
+- [x] **GET** */admin/attendance/:className*
 <p>Gets class list for attendance taking</p>
 <p>Gets list of students to be checked off for attending that class. For students present,
 will increment their attendanceCount</p>
+
+- [x] **POST** */admin/attendance/:className*
+<p>Record attendance for list of students in a class</p>
+<p>For students present, will increment their attendanceCount</p>
 
 
 
@@ -32,19 +36,6 @@ will increment their attendanceCount</p>
 #*Note sure about these yet, some will probably not be needed*
 **GET** */admin/profile/:id*
 <p>Gets admin dashboard taking id as parameter</p>
-
-**GET** */admin/class/:classId*
-<p>Gets class list taking id as parameter</p>
-
- **GET** */admin/student/:classId*
-<p>Gets list of all students in a particular class</p>
-
- **POST** */admin/student/attendance/:classId/:belt-cycle/:stuId*
-<p>Records attendance of a student for a class within a belt cycle</p>
-
-**PUT**
-*/admin/student/attendance/:classId/:belt-cycle/:stuId*
-<p>Updates attendance of a student for a class within a belt cycle</p>
 
 **POST** */admin/student/:belt-test/:stuId*
 <p>Adds new belt test for a particular student</p>
