@@ -1,6 +1,7 @@
 
 var mongoose = require('mongoose');
 var ClassSchema = require('./ClassModel.js')
+var dict = require('./belts.js');
 
 // define the schema for new students
 var StudentSchema = new mongoose.Schema({
@@ -52,25 +53,17 @@ var StudentSchema = new mongoose.Schema({
 });
 
 
+
+
 StudentSchema.pre("save",function(next) {
-  //if student age is between a value and belt is whatever color, Then
-  // check the belt+age combination and push the student to the appropriate class
   if (this._classes.length ==0){
-    if (this._dob >=3 && this._dob <=4){
       this._classes.push({
-        "className": "Little Legends",
+        "className": dict[this._belt],
         "classesAttended": 0,
-        "totalClasses": 36
+        "totalClasses": 0,
+        "isEnrolled": true
       })
     }
-    else {
-      this._classes.push({
-        "className": "Legends Junior",
-        "classesAttended": 0,
-        "totalClasses": 36
-      })
-    }
-  }
   next();
 });
 

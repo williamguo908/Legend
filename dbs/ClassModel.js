@@ -12,7 +12,6 @@ var BBClubSchema = new mongoose.Schema({
     level: Number
 });
 
-
 var ClassSchema = new mongoose.Schema({
   className: {
     type: String
@@ -32,10 +31,5 @@ var ClassSchema = new mongoose.Schema({
   test: [TestSchema]
 });
 
-//Creating model NewUser from RegisterSchema
-//var NewClass = mongoose.model('New Account', ClassSchema, 'User Info')
-
-//Instantiating user from NewUser
-//var class = new NewUser();
 
 module.exports = ClassSchema
