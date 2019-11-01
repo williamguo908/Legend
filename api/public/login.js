@@ -22,24 +22,3 @@ module.exports = (req, res, next) => {
       res.redirect("/user/profile/"+user.id);
   });
 };
-
-
-
-
-// password needs to be hashed in order for it to match the db
-/*UserSchema.pre('save', function (next) {
-  var user = this;
-  bcrypt.hash(user.password, 10, function (err, hash) {
-    if (err) {
-      return next(err);
-    }
-    // store the hashed password in the schema
-    user.password = hash;
-    next();
-  })
-});
-
-var User = mongoose.model('User', UserSchema, 'Login');
-
-module.exports = User;
-*/

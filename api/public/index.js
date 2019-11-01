@@ -16,12 +16,16 @@ public.get("/register", (req, res) => {
 });
 
 public.get("/reset-password", (req, res) => {
-    res.sendFile(_dirname + "/reset-password.html");
+    res.sendFile(__dirname + "/reset-password.html");
+});
+
+public.get("/contact-us", (req,res) => {
+  res.sendFile(__dirname + "/contact-us.html");
 });
 
 
 public.get("/programs", (req, res) => {
-    res.sendFile(_dirname + "/programs.html");
+    res.sendFile(__dirname + "/programs.html");
 });
 
 
