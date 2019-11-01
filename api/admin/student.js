@@ -23,7 +23,7 @@ module.exports = (req, res, next) => {
       if (err){
         console.log(err);
         console.log("Errors during save..redirecting back to add student form...")
-        return res.redirect('/student');
+        return res.redirect('/students');
       }
       else {
         res.send("Success! " + newStudent + " was added." + '\n' + "Register code is " + newStudent.id);

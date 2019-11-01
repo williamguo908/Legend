@@ -58,7 +58,7 @@ var StudentSchema = new mongoose.Schema({
 
 StudentSchema.pre("save",function(next) {
   if (this._classes.length ==0){
-      var age = calcAge(req.body.dob);
+      var age = calcAge(this._dob);
       this._classes.push({
         "className": dict[this._belt],
         "classesAttended": 0,
