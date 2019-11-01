@@ -2,6 +2,7 @@
 var mongoose = require('mongoose');
 var ClassSchema = require('./ClassModel.js')
 var dict = require('./belts.js');
+var calcAge = require('../services/calcAge.js');
 
 // define the schema for new students
 var StudentSchema = new mongoose.Schema({
@@ -13,7 +14,7 @@ var StudentSchema = new mongoose.Schema({
     type: String,
     //required: true
   },
-  _dob: { 
+  _dob: {
     type: Date,
     //required: true
   },
@@ -57,6 +58,7 @@ var StudentSchema = new mongoose.Schema({
 
 StudentSchema.pre("save",function(next) {
   if (this._classes.length ==0){
+      var age = calcAge(req.body.dob);
       this._classes.push({
         "className": dict[this._belt],
         "classesAttended": 0,

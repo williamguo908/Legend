@@ -6,6 +6,7 @@ var dict = {
   "white+": "Little Legends",
   "yellow": "Legend",
   "purple": "Legend Junior"
+
   //....
 };
 

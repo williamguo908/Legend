@@ -10,7 +10,7 @@ const classes = require('./allClasses');
 const profile = require('./stuProfile');
 admin.get("/profile/:id", profile);
 
-admin.get("/student", (req, res) => {
+admin.get("/students", (req, res) => {
     res.sendFile(__dirname + "/dashboard-students.html");
 });
 
@@ -18,9 +18,9 @@ admin.get("/class", (req, res) => {
     res.sendFile(__dirname + "/dashboard-classes.html");
 });
 admin.post("/student", validator.addStudent, newStudent);
-//admin.get("/class", classes);
+admin.get("/class-list", classes); //for demo purposes
 admin.get("/attendance/:className", classList);
-admin.get("/students", students);
+admin.get("/students-list", students); //for demo purposes
 
 
 admin.get("/profile/:id", (req, res)=> {
