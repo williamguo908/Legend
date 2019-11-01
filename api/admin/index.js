@@ -17,6 +17,11 @@ admin.get("/students", (req, res) => {
 admin.get("/class", (req, res) => {
     res.sendFile(__dirname + "/dashboard-classes.html");
 });
+
+admin.get("/student-added", (req, res)=> {
+    res.sendFile(__dirname + "/student-added.html");
+});
+
 admin.post("/student", validator.addStudent, newStudent);
 admin.get("/class-list", classes); //for demo purposes
 admin.get("/attendance/:className", classList);
