@@ -20,7 +20,8 @@
     "express-validator": "^6.2.0",
     "mongodb": "^3.3.2",
     "mongoose": "^5.7.4",
-    "mongoose-unique-validator": "^2.0.3"
+    "mongoose-unique-validator": "^2.0.3",
+    "nodemailer": "^6.3.1"
   },
   "stack": "heroku-18"
 }

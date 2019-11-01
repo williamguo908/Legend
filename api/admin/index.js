@@ -7,7 +7,8 @@ const students = require('./allStudents');
 const classList = require('./class');
 const classes = require('./allClasses');
 
-
+const profile = require('./stuProfile');
+admin.get("/profile/:id", profile);
 
 admin.get("/student", (req, res) => {
     res.sendFile(__dirname + "/testAddForm.html");

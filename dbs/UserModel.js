@@ -27,10 +27,6 @@ var AccountSchema = new mongoose.Schema({
   _role: {
     type: Number //1: admin, 2: instructor?, 3: user
   },
-  _isAccountRegistered: {
-    type: Boolean,
-    default: false
-  },
   _students: [StudentSchema]
 });
 

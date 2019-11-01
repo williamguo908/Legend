@@ -14,7 +14,8 @@ var BBClubSchema = new mongoose.Schema({
 
 var ClassSchema = new mongoose.Schema({
   className: {
-    type: String
+    type: String,
+    default: "Little Legends"
   },
   classesAttended: {
     type: Number

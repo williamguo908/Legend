@@ -9,7 +9,7 @@
 
 - [x] **GET** */contact-us*
 
-- [ ] **GET** */programs*
+- [x] **GET** */programs*
 
 - [x] **POST** */register*
 <p>User registering account</p>
@@ -40,7 +40,7 @@
 
  - [x] **POST** */admin/student*
 <p>Adds new student to the database</p>
-<p>Adds first name, last name, age from dob, address, emergency contact, phone number, belt,
+<p>Adds first name, last name, dob, address, emergency contact, phone number, belt,
 and unique access code</p>
 
 - [x] **GET** */admin/class*
@@ -55,6 +55,10 @@ will increment their attendanceCount</p>
 - [ ] **POST** */admin/attendance/:className*
 <p>Record attendance for list of students in a class</p>
 <p>For students present, will increment their attendanceCount</p>
+
+- [ ] **POST** */admin/promote/:id*
+<p>Promotes student into the next belt class upon successful pass of belt test.</p>
+
 
 
 
