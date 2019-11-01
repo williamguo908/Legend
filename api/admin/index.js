@@ -11,10 +11,14 @@ const profile = require('./stuProfile');
 admin.get("/profile/:id", profile);
 
 admin.get("/student", (req, res) => {
-    res.sendFile(__dirname + "/testAddForm.html");
+    res.sendFile(__dirname + "/dashboard-students.html");
+});
+
+admin.get("/class", (req, res) => {
+    res.sendFile(__dirname + "/dashboard-classes.html");
 });
 admin.post("/student", validator.addStudent, newStudent);
-admin.get("/class", classes);
+//admin.get("/class", classes);
 admin.get("/attendance/:className", classList);
 admin.get("/students", students);
 

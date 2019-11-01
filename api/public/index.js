@@ -19,6 +19,7 @@ public.get("/reset-password", (req, res) => {
     res.sendFile(_dirname + "/reset-password.html");
 });
 
+
 public.get("/programs", (req, res) => {
     res.sendFile(_dirname + "/programs.html");
 });
@@ -34,5 +35,8 @@ public.post("/login", validator.authenticate, authUser);
 
 const newUser = require('./register')
 public.post("/register", validator.createUser, newUser);
+
+
+
 
 module.exports = public;
