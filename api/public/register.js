@@ -35,8 +35,8 @@ module.exports = (req, res, next) => {
       return res.redirect('/register');
     }
     else {
-      res.send(user);
-      //res.redirect('/login');
+      //res.send(user);
+      res.redirect('/login');
       console.log("Success..." + user._firstName + " saved!");
     }
     });
