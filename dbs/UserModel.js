@@ -65,10 +65,10 @@ AccountSchema.statics.authenticate = function (email, password, callback) {
       // user found now check the password
       bcrypt.compare(password, user._password, function (err, result) {
         if (result === true) {
-          console.log("User found");
+          console.log("User authenticated.");
           return callback(null, user);
         } else {
-          console.log("User not found");
+          console.log("Invalid credentials.");
           return callback();
         }
       })

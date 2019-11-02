@@ -19,6 +19,7 @@ module.exports = (req, res, next) => {
       return res.redirect('/login');
     }
       //res.send("Account authenticated.")
-      res.redirect("/user/profile/"+user.id);
+      res.redirect("/admin/students/");
+      //res.redirect("/user/profile/"+user.id);
   });
 };
