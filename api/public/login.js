@@ -22,7 +22,7 @@ module.exports = (req, res, next) => {
     if (err) return res.send(err);
     if (!user) return res.status(404).send('No user found.');
     var token = jwt.sign({ id: user._id, role: user._role}, secret, {
-      expiresIn: 60*5 // expires in 300 seconds
+      expiresIn: 86400; // expires in 86400 seconds
     });
     res.cookie('jwt', token);
     //res.status(200).send({ auth: true, token: token });
