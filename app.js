@@ -9,11 +9,13 @@ const api = require('./api')
 const port = process.env.PORT
 const mongo_uri = process.env.MONGODB_URI
 var mongoose = require('mongoose');
+
 var bodyParser = require('body-parser');
-//const flash = require('express-flash-notification');
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-//app.use(flash(app));
+app.use(bodyParser.urlencoded({ extended: false }));
+
+var cookieParser = require('cookie-parser')
+app.use(cookieParser())
 
 // Connect routes to app.js
 app.use('/', api)

@@ -30,7 +30,7 @@
 
 (Initial resource endpoints for User and Admin accounts)
 # Admin
-- [x] **GET** */admin/student*
+- [x] **GET** */admin/students*
 <p>Gets list of all students</p>
 <p>Gets first name, last name, belt, classes attended for all students</p>
 
@@ -38,7 +38,7 @@
 <p>Gets view of student with particular id</p>
 <p>Gets first name, last name, belt, classes attended, public and private notes of a student</p>
 
- - [x] **POST** */admin/student*
+ - [x] **POST** */admin/students*
 <p>Adds new student to the database</p>
 <p>Adds first name, last name, dob, address, emergency contact, phone number, belt,
 and unique access code</p>

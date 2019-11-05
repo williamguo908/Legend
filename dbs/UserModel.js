@@ -32,6 +32,8 @@ var AccountSchema = new mongoose.Schema({
 
 
 
+
+
 AccountSchema.pre('save', function(next) {
   const user = this;
   if (!user.isModified('_password')) {
@@ -55,11 +57,14 @@ AccountSchema.statics.authenticate = function (email, password, callback) {
   User.findOne({ _email: email })
     .exec(function (err, user) {
       if (err) {
+        var err = new Error('Error on the server.');
+        err.status = 500;
         return callback(err)
       } else if (!user) { // if user is not found
         console.log("no registered user found");
         var err = new Error('User not found.');
         err.status = 401;
+        err.statusMessage = "User not found.";
         return callback(err);
       }
       // user found now check the password
@@ -69,7 +74,10 @@ AccountSchema.statics.authenticate = function (email, password, callback) {
           return callback(null, user);
         } else {
           console.log("Invalid credentials.");
-          return callback();
+          var err = new Error('Invalid credentials.');
+          err.status = 401;
+          err.statusMessage = 'Invalid credentials.';
+          return callback(err);
         }
       })
     });

@@ -1,11 +1,17 @@
 
 const admin = require('express').Router();
 const validator = require("../../services/validator.js");
-
 const newStudent = require('./student')
 const students = require('./allStudents');
 const classList = require('./class');
 const classes = require('./allClasses');
+
+//for admin creating another admin
+admin.get("/add", (req,res) => {
+  res.sendFile(__dirname + "/testAddForm.html");
+});
+const newadmin = require('./createAdmin');
+admin.post("/add", newadmin);
 
 const profile = require('./stuProfile');
 admin.get("/profile/:id", profile);
@@ -41,11 +47,5 @@ admin.get("/student/:id", (req, res) => {
     res.send("view student with particular id");
 });
 
-
-
-/*
-more resource endpoints to be continued...
-
-*/
 
 module.exports = admin;

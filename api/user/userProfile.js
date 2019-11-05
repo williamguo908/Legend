@@ -11,7 +11,7 @@ module.exports = (req, res, next) => {
   Student.findById(userId, '-_password').exec(function (err, person) {
     if (err) return handleError(err);
     console.log(person);
-    res.send(person);
+    res.send("User Account Authenticated. " + person);
   });
   //....
 };
