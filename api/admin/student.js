@@ -17,10 +17,9 @@ module.exports = (req, res, next) => {
     _stuLastName:  req.body.lastname, _dob: req.body.dob, _address: req.body.address,
     _contactName: req.body.contactName, _contactPhone: req.body.contactPhone, _belt: req.body.belt});
 
-
     newStudent.save(function (err, newStudent) {
       console.log("Saving new student to database...")
-      if (err){
+      if (err) {
         console.log(err);
         console.log("Errors during save..redirecting back to add student form...")
         return res.redirect('/students');

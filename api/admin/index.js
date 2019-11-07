@@ -25,6 +25,9 @@ admin.get("/class", (req, res) => {
     res.sendFile(__dirname + "/dashboard-classes.html");
 });
 
+const studentsAttended = require('./attendance');
+admin.post("/attendance/:className", studentsAttended);
+
 admin.get("/student-added", (req, res)=> {
     res.sendFile(__dirname + "/student-added.html");
 });
