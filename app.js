@@ -26,6 +26,7 @@ app.use(express.static('./api/public'));
 mongoose.connect(mongo_uri, { useNewUrlParser: true,  dbName: "Users", useUnifiedTopology:true } )
 mongoose.set('useCreateIndex', true);
 mongoose.set('useFindAndModify', false);
+mongoose.set('debug', true);
 
 //Gets the default connection
 const db = mongoose.connection;
