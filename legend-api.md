@@ -52,7 +52,7 @@ and unique access code</p>
 <p>Gets list of students to be checked off for attending that class. For students present,
 will increment their attendanceCount</p>
 
-- [ ] **POST** */admin/attendance/:className*
+- [x] **POST** */admin/attendance/*
 <p>Record attendance for list of students in a class</p>
 <p>For students present, will increment their attendanceCount</p>
 

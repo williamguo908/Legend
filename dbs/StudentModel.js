@@ -62,7 +62,7 @@ StudentSchema.pre("save",function(next) {
       this._classes.push({
         "className": dict[this._belt],
         "classesAttended": 0,
-        "totalClasses": 0,
+        "totalClasses": 36,
         "isEnrolled": true
       })
     }

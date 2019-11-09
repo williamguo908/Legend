@@ -25,6 +25,28 @@
     <meta property="fb:admins" content="Facebook numeric ID">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,700i,900&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" media="all" href="../../css/app.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js" integrity="sha384-FzT3vTVGXqf7wRfy8k4BiyzvbNfeYjK+frTVqZeNDFl8woCbF0CYG6g2fMEFFo/i" crossorigin="anonymous"></script>-->
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $.getJSON("/admin/students-list",function(data){
+            var content =""
+            $.each(data, function(i,student){
+                var width = (student.totalAttended/student.totalClasses)*100
+                console.log(width);
+                content += '<div class="users__item"><div class="users__cell"><div class="users__preview"><img class="users__pic" src="../../img/user.png"></div><div class="users__group">';
+                content += '<div class="users__name">' + student.firstName + ' ' + student.lastName + '</div>';
+                content += '<div class="users__info">' + student.belt + " belt" + '</div> </div> </div>';
+                content += '<div class="users__cell"><div class="users__scale">';
+                content += '<div class="users__progress" style="width:' + width + '%"></div>';
+                content += '<div class="users__counter">' + student.totalAttended + " of " + student.totalClasses + '</div> </div> </div>';
+                content += '<div class="users__cell"><a class="users__btn btn-stroke" href="/user/profile/' + student._id + '"'  + '>VIEW PROFILE</a></div>';
+                content += '</div>';
+            });
+            $(content).appendTo("#students");
+        });
+    });
+    </script>
   </head>
   <body>
     <div class="page">
@@ -40,103 +62,7 @@
               <div class="dashboard__nav"><a class="dashboard__link active" href="/admin/students">Students</a><a class="dashboard__link" href="/admin/class">Classes</a></div><button class="dashboard__add" data-fancybox data-src="#add-student"><img class="dashboard__icon" src="../../img/add.svg"></button>
             </div>
             <div class="dashboard__body">
-              <div class="users">
-                <div class="users__item">
-                  <div class="users__cell">
-                    <div class="users__preview"><img class="users__pic" src="../../img/user.png"></div>
-                    <div class="users__group">
-                      <div class="users__name">Gilberto Swift</div>
-                      <div class="users__info">Yellow Belt</div>
-                    </div>
-                  </div>
-                  <div class="users__cell">
-                    <div class="users__scale">
-                      <div class="users__progress" style="width: 50%"></div>
-                      <div class="users__counter">18 of 36</div>
-                    </div>
-                  </div>
-                  <div class="users__cell"><a class="users__btn btn-stroke" href="#">VIEW PROFILE</a></div>
-                </div>
-                <div class="users__item">
-                  <div class="users__cell">
-                    <div class="users__preview"><img class="users__pic" src="../../img/user.png"></div>
-                    <div class="users__group">
-                      <div class="users__name">Cierra Walsh</div>
-                      <div class="users__info">Purple Belt</div>
-                    </div>
-                  </div>
-                  <div class="users__cell">
-                    <div class="users__scale">
-                      <div class="users__progress" style="width: 73%"></div>
-                      <div class="users__counter">27 of 36</div>
-                    </div>
-                  </div>
-                  <div class="users__cell"><a class="users__btn btn-stroke" href="#">VIEW PROFILE</a></div>
-                </div>
-                <div class="users__item">
-                  <div class="users__cell">
-                    <div class="users__preview"><img class="users__pic" src="../../img/user.png"></div>
-                    <div class="users__group">
-                      <div class="users__name">Tomasa Deckow</div>
-                      <div class="users__info">White Belt</div>
-                    </div>
-                  </div>
-                  <div class="users__cell">
-                    <div class="users__scale">
-                      <div class="users__progress" style="width: 80%"></div>
-                      <div class="users__counter">28 of 36</div>
-                    </div>
-                  </div>
-                  <div class="users__cell"><a class="users__btn btn-stroke" href="#">VIEW PROFILE</a></div>
-                </div>
-                <div class="users__item">
-                  <div class="users__cell">
-                    <div class="users__preview"><img class="users__pic" src="../../img/user.png"></div>
-                    <div class="users__group">
-                      <div class="users__name">Naomi Ward</div>
-                      <div class="users__info">Purple Belt</div>
-                    </div>
-                  </div>
-                  <div class="users__cell">
-                    <div class="users__scale">
-                      <div class="users__progress" style="width: 43%"></div>
-                      <div class="users__counter">17 of 36</div>
-                    </div>
-                  </div>
-                  <div class="users__cell"><a class="users__btn btn-stroke" href="#">VIEW PROFILE</a></div>
-                </div>
-                <div class="users__item">
-                  <div class="users__cell">
-                    <div class="users__preview"><img class="users__pic" src="../../img/user.png"></div>
-                    <div class="users__group">
-                      <div class="users__name">Syndi Parisian</div>
-                      <div class="users__info">Yellow Belt</div>
-                    </div>
-                  </div>
-                  <div class="users__cell">
-                    <div class="users__scale">
-                      <div class="users__progress" style="width: 90%"></div>
-                      <div class="users__counter">32 of 36</div>
-                    </div>
-                  </div>
-                  <div class="users__cell"><a class="users__btn btn-stroke" href="#">VIEW PROFILE</a></div>
-                </div>
-                <div class="users__item">
-                  <div class="users__cell">
-                    <div class="users__preview"><img class="users__pic" src="../../img/user.png"></div>
-                    <div class="users__group">
-                      <div class="users__name">Parker Heller</div>
-                      <div class="users__info">White Belt</div>
-                    </div>
-                  </div>
-                  <div class="users__cell">
-                    <div class="users__scale">
-                      <div class="users__progress" style="width: 43%"></div>
-                      <div class="users__counter">17 of 36</div>
-                    </div>
-                  </div>
-                  <div class="users__cell"><a class="users__btn btn-stroke" href="#">VIEW PROFILE</a></div>
-                </div>
+              <div class="users" id="students">
               </div>
             </div>
           </div>
@@ -177,20 +103,20 @@
             <div class="form__field field">
               <div class="field__wrap"><input class="field__input" type="text" name="belt" placeholder="Belt"></div>
             </div>
-                        <div class="form__foot"><button class="form__btn btn" type="submit">SUBMIT</button></div>
-            <!--<div class="form__foot"><button class="form__btn btn" type="submit" data-fancybox data-src="#student-added">SUBMIT</button></div>-->
+                <div class="form__foot"><button class="form__btn btn" type="submit">SUBMIT</button></div>
+          <!--<div class="form__foot"><button class="form__btn btn" type="submit" data-fancybox data-src="#student-added">SUBMIT</button></div>-->
           </form>
         </div>
         <!--
         <div class="form form_modal" id="student-added">
-          <form class="form__container" action="">
+          <form class="form__container" >
             <div class="form__subtitle">STUDENT ADDED</div>
             <div class="form__content">You have added <strong>$name $lastname</strong> successfully. Please use the confirmation code below:</div>
             <div class="form__code">XU93HD</div>
             <div class="form__foot"><button class="form__btn btn" type="submit" data-fancybox-close>DONE</button></div>
           </form>
         </div>
-      -->
+        -->
       </div>
       <footer class="footer">
         <div class="footer__center center"></div>
