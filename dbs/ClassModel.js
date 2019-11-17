@@ -29,6 +29,9 @@ var ClassSchema = new mongoose.Schema({
   isEnrolled: {
     type: Boolean
   },
+  ageGroup: {
+    type: String
+  },
   test: [TestSchema]
 });
 

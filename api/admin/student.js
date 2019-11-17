@@ -1,7 +1,6 @@
 
 var mongoose = require('mongoose');
 var NewStudent = require('../../dbs/UserModel.js');
-var calcAge = require('../../services/calcAge.js');
 const { validationResult } = require('express-validator');
 
 module.exports = (req, res, next) => {

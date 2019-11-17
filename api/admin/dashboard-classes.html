@@ -25,6 +25,29 @@
     <meta property="fb:admins" content="Facebook numeric ID">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,700i,900&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" media="all" href="../../css/app.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js" integrity="sha384-FzT3vTVGXqf7wRfy8k4BiyzvbNfeYjK+frTVqZeNDFl8woCbF0CYG6g2fMEFFo/i" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $.getJSON("/admin/class-list",function(data){
+            var content =""
+            var maxStudents = 40;
+            $.each(data, function(i, stuClass){
+                var width = (stuClass.numberEnrolled/maxStudents)*100
+                console.log(width);
+                content += '<div class="users__item"><div class="users__cell"><div class="users__preview"><img class="users__pic" src="../../img/user.png"></div>';
+                content += '<div class="users__group"><div class="users__name">' + stuClass._id + '</div>' ;
+                content += '<div class="users__info">' + "age group here"  + '</div> </div> </div>';
+                content += '<div class="users__cell"><div class="users__scale">';
+                content += '<div class="users__progress" style="width:' + width + '%"></div>';
+                content += '<div class="users__counter">' + stuClass.numberEnrolled + " of " + maxStudents + '</div> </div> </div>';
+                content += '<div class="users__cell"><a class="users__btn btn-stroke" href="/admin/attendance/' + stuClass._id + '"'  + '>ATTENDANCE</a></div>';
+                content += '</div>';
+            });
+            $(content).appendTo("#classes");
+        });
+    });
+    </script>
   </head>
   <body>
     <div class="page">
@@ -40,135 +63,7 @@
               <div class="dashboard__nav"><a class="dashboard__link" href="/admin/students">Students</a><a class="dashboard__link active" href="/admin/class">Classes</a></div>
             </div>
             <div class="dashboard__body">
-              <div class="users">
-                <div class="users__item">
-                  <div class="users__cell">
-                    <div class="users__preview"><img class="users__pic" src="../../img/user.png"></div>
-                    <div class="users__group">
-                      <div class="users__name">Little Legend</div>
-                      <div class="users__info">3-4 years old</div>
-                    </div>
-                  </div>
-                  <div class="users__cell">
-                    <div class="users__scale">
-                      <div class="users__progress" style="width: 42%"></div>
-                      <div class="users__counter">17 of 40 (Students)</div>
-                    </div>
-                  </div>
-                  <div class="users__cell"><a class="users__btn btn-stroke" href="#" data-fancybox data-src="#attendance">ATTENDANCE</a></div>
-                </div>
-                <div class="users__item">
-                  <div class="users__cell">
-                    <div class="users__preview"><img class="users__pic" src="../../img/user.png"></div>
-                    <div class="users__group">
-                      <div class="users__name">Legend Junior</div>
-                      <div class="users__info">8-12 years old</div>
-                    </div>
-                  </div>
-                  <div class="users__cell">
-                    <div class="users__scale">
-                      <div class="users__progress" style="width: 65%"></div>
-                      <div class="users__counter">26 of 40 (Students)</div>
-                    </div>
-                  </div>
-                  <div class="users__cell"><a class="users__btn btn-stroke" href="#" data-fancybox data-src="#attendance">ATTENDANCE</a></div>
-                </div>
-                <div class="users__item">
-                  <div class="users__cell">
-                    <div class="users__preview"><img class="users__pic" src="../../img/user.png"></div>
-                    <div class="users__group">
-                      <div class="users__name">Legend</div>
-                      <div class="users__info">5-7 year old</div>
-                    </div>
-                  </div>
-                  <div class="users__cell">
-                    <div class="users__scale">
-                      <div class="users__progress" style="width: 75%"></div>
-                      <div class="users__counter">30 of 40 (Students)</div>
-                    </div>
-                  </div>
-                  <div class="users__cell"><a class="users__btn btn-stroke" href="#" data-fancybox data-src="#attendance">ATTENDANCE</a></div>
-                </div>
-                <div class="users__item">
-                  <div class="users__cell">
-                    <div class="users__preview"><img class="users__pic" src="../../img/user.png"></div>
-                    <div class="users__group">
-                      <div class="users__name">Little Legend</div>
-                      <div class="users__info">3-4 year old</div>
-                    </div>
-                  </div>
-                  <div class="users__cell">
-                    <div class="users__scale">
-                      <div class="users__progress" style="width: 47%"></div>
-                      <div class="users__counter">17 of 40 (Students)</div>
-                    </div>
-                  </div>
-                  <div class="users__cell"><a class="users__btn btn-stroke" href="#" data-fancybox data-src="#attendance">ATTENDANCE</a></div>
-                </div>
-                <div class="users__item">
-                  <div class="users__cell">
-                    <div class="users__preview"><img class="users__pic" src="../../img/user.png"></div>
-                    <div class="users__group">
-                      <div class="users__name">Legend Beginner</div>
-                      <div class="users__info">5-7 years old</div>
-                    </div>
-                  </div>
-                  <div class="users__cell">
-                    <div class="users__scale">
-                      <div class="users__progress" style="width: 70%"></div>
-                      <div class="users__counter">32 of 40 (Students)</div>
-                    </div>
-                  </div>
-                  <div class="users__cell"><a class="users__btn btn-stroke" href="#" data-fancybox data-src="#attendance">ATTENDANCE</a></div>
-                </div>
-                <div class="users__item">
-                  <div class="users__cell">
-                    <div class="users__preview"><img class="users__pic" src="../../img/user.png"></div>
-                    <div class="users__group">
-                      <div class="users__name">Little Legend</div>
-                      <div class="users__info">3-4 year old</div>
-                    </div>
-                  </div>
-                  <div class="users__cell">
-                    <div class="users__scale">
-                      <div class="users__progress" style="width: 47%"></div>
-                      <div class="users__counter">17 of 40 (Students)</div>
-                    </div>
-                  </div>
-                  <div class="users__cell"><a class="users__btn btn-stroke" href="#" data-fancybox data-src="#attendance">ATTENDANCE</a></div>
-                </div>
-                <div class="users__item">
-                  <div class="users__cell">
-                    <div class="users__preview"><img class="users__pic" src="../../img/user.png"></div>
-                    <div class="users__group">
-                      <div class="users__name">Little Legend</div>
-                      <div class="users__info">3-4 year old</div>
-                    </div>
-                  </div>
-                  <div class="users__cell">
-                    <div class="users__scale">
-                      <div class="users__progress" style="width: 47%"></div>
-                      <div class="users__counter">17 of 40 (Students)</div>
-                    </div>
-                  </div>
-                  <div class="users__cell"><a class="users__btn btn-stroke" href="#" data-fancybox data-src="#attendance">ATTENDANCE</a></div>
-                </div>
-                <div class="users__item">
-                  <div class="users__cell">
-                    <div class="users__preview"><img class="users__pic" src="../../img/user.png"></div>
-                    <div class="users__group">
-                      <div class="users__name">Little Legend</div>
-                      <div class="users__info">3-4 year old</div>
-                    </div>
-                  </div>
-                  <div class="users__cell">
-                    <div class="users__scale">
-                      <div class="users__progress" style="width: 47%"></div>
-                      <div class="users__counter">17 of 40 (Students)</div>
-                    </div>
-                  </div>
-                  <div class="users__cell"><a class="users__btn btn-stroke" href="#" data-fancybox data-src="#attendance">ATTENDANCE</a></div>
-                </div>
+              <div class="users" id="classes">
               </div>
             </div>
           </div>
