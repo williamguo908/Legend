@@ -24,7 +24,8 @@ module.exports = (req, res, next) => {
         return res.redirect('/students');
       }
       else {
-        res.send("Success! " + req.body.firstname + " " + req.body.lastname + " was added. Register code is " + newStudent.id);
+        return res.json({ id: newStudent.id, firstname: req.body.firstname, lastname: req.body.lastname });
+        //res.send("Success! " + req.body.firstname + " " + req.body.lastname + " was added. Register code is " + newStudent.id);
         console.log("Success! " + newStudent + " was added. Register code is " + newStudent.id);
       }
     });

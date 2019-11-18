@@ -41,12 +41,48 @@
                 content += '<div class="users__cell"><div class="users__scale">';
                 content += '<div class="users__progress" style="width:' + width + '%"></div>';
                 content += '<div class="users__counter">' + stuClass.numberEnrolled + " of " + maxStudents + '</div> </div> </div>';
-                content += '<div class="users__cell"><a class="users__btn btn-stroke" href="/admin/attendance/' + stuClass._id + '"'  + '>ATTENDANCE</a></div>';
+                content += '<div class="users__cell"><a class="users__btn btn-stroke" data-fancybox data-src="#attendance" href="/admin/attendance/' + stuClass._id + '"'  + '>ATTENDANCE</a></div>';
+                //content += '<div class="users__cell"><a class="users__btn btn-stroke" href="#">ATTENDANCE</a></div>';
                 content += '</div>';
             });
             $(content).appendTo("#classes");
         });
     });
+
+        $(document).on('click',"a.users__btn.btn-stroke", function(event) {
+            //alert("As you can see, the link no longer took you to jquery.com");
+            var href = $(this).attr('href');
+            event.preventDefault();
+            $.getJSON(href,function(data){
+                var n = href.lastIndexOf("/") + 1;
+                var end = href.length;
+                var classname = href.substring(n, end);
+                console.log("classname:"+ classname);
+
+                var content =""
+                content += '<form method="post" action="/admin/attendance/' + classname + '>'
+                content += '<div class="attendance__title">' + classname +  '</div>'
+                content += '<div class="attendance__users users">'
+
+                $.each(data, function(i, student) {
+                  content += '<div class="users__item"><div class="users__cell"><div class="users__preview"><img class="users__pic" src="../../img/user.png"></div><div class="users__group">';
+                  content += '<div class="users__name">' + student.firstName + ' ' + student.lastName + '</div>';
+                  content += '<div class="users__info">' + "last attended days ago"  + '</div> </div> </div>';
+                  content += '<div class="users__cell"><label class="users__checkbox checkbox"><input class="checkbox__input" name="studentId" type="checkbox" value="' + student._id + '"><span class="checkbox__content"></span></label></div>'
+                  content += '</div>';
+                });
+                content += '<div class="form__foot">'
+                content += '<button class="form__btn btn" input type="submit" name="className" value="' + classname + '">DONE</button></div>'
+                content += '</form>'
+
+                $("#attendance").empty();
+
+                $(content).appendTo("#attendance");
+            });
+            $.fancybox.open({ // FancyBox 3
+                src: '#attendance'
+            });
+        });
     </script>
   </head>
   <body>
@@ -68,10 +104,9 @@
             </div>
           </div>
         </div>
-        <div class="attendance" id="attendance" style="display: none">
-          <form method="post" action="/admin/attendance/Little Legends">
-          <div class="attendance__title">Class Name Attendance</div>
-          <div class="attendance__users users">
+        <div class="attendance" id ="attendance" style="display: none">
+
+            <!--
             <div class="users__item">
               <div class="users__cell">
                 <div class="users__preview"><img class="users__pic" src="../../img/user.png"></div>
@@ -82,80 +117,7 @@
               </div>
               <div class="users__cell"><label class="users__checkbox checkbox"><input class="checkbox__input" name="studentId" type="checkbox" value="5dbc8ba7b23bcb46347834ff"><span class="checkbox__content"></span></label></div>
             </div>
-            <div class="users__item">
-              <div class="users__cell">
-                <div class="users__preview"><img class="users__pic" src="../../img/user.png"></div>
-                <div class="users__group">
-                  <div class="users__name">Gilberto Swift</div>
-                  <div class="users__info">0 days ago</div>
-                </div>
-              </div>
-              <div class="users__cell"><label class="users__checkbox checkbox"><input class="checkbox__input" name="studentId" type="checkbox" value="5dbc7f1f1cfd8b001775aa93"><span class="checkbox__content"></span></label></div>
-            </div>
-            <div class="users__item">
-              <div class="users__cell">
-                <div class="users__preview"><img class="users__pic" src="../../img/user.png"></div>
-                <div class="users__group">
-                  <div class="users__name">Tomasa Deckow</div>
-                  <div class="users__info">0 days ago</div>
-                </div>
-              </div>
-              <div class="users__cell"><label class="users__checkbox checkbox"><input class="checkbox__input" name="studentId" type="checkbox" value="5dbc8ccbb23bcb4634783503"><span class="checkbox__content"></span></label></div>
-            </div>
-            <div class="users__item">
-              <div class="users__cell">
-                <div class="users__preview"><img class="users__pic" src="../../img/user.png"></div>
-                <div class="users__group">
-                  <div class="users__name">Naomi Ward</div>
-                  <div class="users__info">0 days ago</div>
-                </div>
-              </div>
-              <div class="users__cell"><label class="users__checkbox checkbox"><input class="checkbox__input" name="studentId" type="checkbox" value="5dbc8d7db23bcb4634783507"><span class="checkbox__content"></span></label></div>
-            </div>
-            <div class="users__item">
-              <div class="users__cell">
-                <div class="users__preview"><img class="users__pic" src="../../img/user.png"></div>
-                <div class="users__group">
-                  <div class="users__name">Albin Marquardt</div>
-                  <div class="users__info">0 days ago</div>
-                </div>
-              </div>
-              <div class="users__cell"><label class="users__checkbox checkbox"><input class="checkbox__input" name="studentId" type="checkbox" value="5dbc8f4fb23bcb4634783513"><span class="checkbox__content"></span></label></div>
-            </div>
-            <div class="users__item">
-              <div class="users__cell">
-                <div class="users__preview"><img class="users__pic" src="../../img/user.png"></div>
-                <div class="users__group">
-                  <div class="users__name">Syndi Parisian</div>
-                  <div class="users__info">0 days ago</div>
-                </div>
-              </div>
-              <div class="users__cell"><label class="users__checkbox checkbox"><input class="checkbox__input" name="studentId" type="checkbox" value="5dbc8dfab23bcb463478350b"><span class="checkbox__content"></span></label></div>
-            </div>
-            <div class="users__item">
-              <div class="users__cell">
-                <div class="users__preview"><img class="users__pic" src="../../img/user.png"></div>
-                <div class="users__group">
-                  <div class="users__name">Parker Heller</div>
-                  <div class="users__info">0 days ago</div>
-                </div>
-              </div>
-              <div class="users__cell"><label class="users__checkbox checkbox"><input class="checkbox__input" type="checkbox" name="studentId" value="5dbc8e89b23bcb463478350f"><span class="checkbox__content"></span></label></div>
-            </div>
-            <div class="users__item">
-              <div class="users__cell">
-                <div class="users__preview"><img class="users__pic" src="../../img/user.png"></div>
-                <div class="users__group">
-                  <div class="users__name">Pam Craig</div>
-                  <div class="users__info">0 days ago</div>
-                </div>
-              </div>
-              <div class="users__cell"><label class="users__checkbox checkbox"><input class="checkbox__input" type="checkbox" name="studentId" value="5dbbdc069458be2270126fdb"><span class="checkbox__content"></span></label></div>
-            </div>
-            <div class="form__foot">
-              <!--<button class="form__btn btn" type="submit" name="className" value="Little Legends">DONE</button></div>-->
-              <button class="form__btn btn" input type="submit" name="className" value="Little Legends">DONE</button></div>
-          </form>
+          -->
           </div>
         </div>
       </div>

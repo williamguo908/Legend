@@ -46,6 +46,39 @@
             $(content).appendTo("#students");
         });
     });
+
+    $(document).on('click',".form__btn.btn", function(event) {
+      alert("As you can see, the link no longer took you to jquery.com");
+      $("#add-student").submit( function(){
+      //event.preventDefault();
+
+        $.post($(this).attr('action'), $(this).serialize(), function(student) {
+          var content =""
+          content += '<form class="form__container" >'
+          content += '<div class="form__subtitle">STUDENT ADDED</div>'
+          content += '<div class="form__content">You have added <strong>' + student.firstname + " " + student.lastname + '</strong> successfully. Please use the confirmation code below:</div>'
+          content += '<div class="form__code">' + student.id + '</div>'
+          content += '<div class="form__foot"><button class="form__btn btn" data-fancybox-close>DONE</button></div>'
+          content += '</form>'
+          $(content).appendTo("#student-added");
+          //alert(student.id + " "+ student.firstname + " "+ student.lastname);
+          console.log(student.id + " "+ student.firstname + " "+ student.lastname);
+        }, 'json');
+        this.reset();
+        return false;
+      });
+      $.fancybox.open({ // FancyBox 3
+          src: '#student-added'
+      });
+        /*
+    <form class="form__container" >
+      <div class="form__subtitle">STUDENT ADDED</div>
+      <div class="form__content">You have added <strong>$name $lastname</strong> successfully. Please use the confirmation code below:</div>
+      <div class="form__code">XU93HD</div>
+      <div class="form__foot"><button class="form__btn btn" type="submit" data-fancybox-close>DONE</button></div>
+    </form>
+    });*/
+      });
     </script>
   </head>
   <body>
@@ -67,8 +100,8 @@
             </div>
           </div>
         </div>
-        <div class="form form_modal" id="add-student">
-          <form class="form__container" method="post" action="/admin/students">
+        <div class="form form_modal" >
+          <form class="form__container" method="post" id="add-student" action="/admin/students">
             <div class="form__title title">ADD STUDENT</div>
             <div class="form__row">
               <div class="form__col">
@@ -128,20 +161,12 @@
                 </div>
               </div>
             </div>
-                <div class="form__foot"><button class="form__btn btn" type="submit">SUBMIT</button></div>
+                <div class="form__foot"><button class="form__btn btn">SUBMIT</button></div>
           <!--<div class="form__foot"><button class="form__btn btn" type="submit" data-fancybox data-src="#student-added">SUBMIT</button></div>-->
           </form>
         </div>
-        <!--
         <div class="form form_modal" id="student-added">
-          <form class="form__container" >
-            <div class="form__subtitle">STUDENT ADDED</div>
-            <div class="form__content">You have added <strong>$name $lastname</strong> successfully. Please use the confirmation code below:</div>
-            <div class="form__code">XU93HD</div>
-            <div class="form__foot"><button class="form__btn btn" type="submit" data-fancybox-close>DONE</button></div>
-          </form>
         </div>
-        -->
 		       <div class="profile" id="profile">
           <div class="profile__row">
             <div class="profile__col">

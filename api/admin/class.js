@@ -18,7 +18,7 @@ module.exports = (req, res, next) => {
       {
         $project:
         {
-           _id: null,
+           _id: '$_students._id',
            firstName: '$_students._stuFirstName',
            lastName: '$_students._stuLastName',
         }
