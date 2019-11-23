@@ -34,7 +34,7 @@
 <p>Gets list of all students</p>
 <p>Gets first name, last name, belt, classes attended for all students</p>
 
-- [ ] **GET** */admin/student/:id*
+- [x] **GET** */admin/student/:id*
 <p>Gets view of student with particular id</p>
 <p>Gets first name, last name, belt, classes attended, public and private notes of a student</p>
 
@@ -96,16 +96,10 @@ will increment their attendanceCount</p>
 **GET** */user/profile/:id*
 <p>Gets user dashboard taking id as parameter</p>
 
-**PUT**
-
-**GET** */user/belt/:stuId*
-<p>Get belt standing of a particular student taking id as parameter</p>
 
 **GET** */user/attendance/:stuId*
 <p>Get full attendance history of a student taking id as parameter</p>
 
-**GET** */user/attendance/:classId/:belt-cycle/:stuId*
-<p>Gets attendance history of a student within a belt-cycle for a particular class</p>
 
 **GET** */user/schedule/:stuId*
 <p>Get schedule of a student taking id as parameter</p>

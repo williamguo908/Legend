@@ -48,7 +48,6 @@
     });
 
     $(document).on('click',".form__btn.btn", function(event) {
-      alert("As you can see, the link no longer took you to jquery.com");
       $("#add-student").submit( function(){
       //event.preventDefault();
 
@@ -70,6 +69,29 @@
       $.fancybox.open({ // FancyBox 3
           src: '#student-added'
       });
+
+      $(document).on('click',".form__btn.btn", function(event) {
+        $("#add-student").submit( function(){
+        //event.preventDefault();
+
+          $.post($(this).attr('action'), $(this).serialize(), function(student) {
+            var content =""
+            content += '<form class="form__container" >'
+            content += '<div class="form__subtitle">STUDENT ADDED</div>'
+            content += '<div class="form__content">You have added <strong>' + student.firstname + " " + student.lastname + '</strong> successfully. Please use the confirmation code below:</div>'
+            content += '<div class="form__code">' + student.id + '</div>'
+            content += '<div class="form__foot"><button class="form__btn btn" data-fancybox-close>DONE</button></div>'
+            content += '</form>'
+            $(content).appendTo("#student-added");
+            //alert(student.id + " "+ student.firstname + " "+ student.lastname);
+            console.log(student.id + " "+ student.firstname + " "+ student.lastname);
+          }, 'json');
+          this.reset();
+          return false;
+        });
+        $.fancybox.open({ // FancyBox 3
+            src: '#student-added'
+        });
         /*
     <form class="form__container" >
       <div class="form__subtitle">STUDENT ADDED</div>
