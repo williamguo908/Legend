@@ -13,14 +13,14 @@ module.exports = (req, res, next) => {
         return res.status(422).json({ errors: errors.array() });
     }
 
-    //const userId = req.params.id;
+    const userId = req.params.id;
+    const belt = req.params.belt;
 
     console.log("Updating profile " + userId);
     Student.findOneAndUpdate(
       { '_students._id' : userId  }, //query
       {
-        $set: { "_students._firstName": firstname, "_students._lastName": lastname,  "_students._address": address,
-       "_students._contactName": contactName , "_students._contactPhone": contactPhone } //increment operation
+        $set: { "_students._belt": belt  }
       }, function (err, res) {
         if (err) {
           console.log("err:", err)
