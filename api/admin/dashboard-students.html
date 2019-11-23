@@ -74,7 +74,6 @@
       $(document).on('click',".form__btn.btn", function(event) {
         $("#add-student").submit( function(){
         //event.preventDefault();
-
           $.post($(this).attr('action'), $(this).serialize(), function(student) {
             var content =""
             content += '<form class="form__container" >'
@@ -93,18 +92,20 @@
         $.fancybox.open({ // FancyBox 3
             src: '#student-added'
         });
-        /*
+      });
+      });
+        </script>
+        <!--
     <form class="form__container" >
       <div class="form__subtitle">STUDENT ADDED</div>
       <div class="form__content">You have added <strong>$name $lastname</strong> successfully. Please use the confirmation code below:</div>
       <div class="form__code">XU93HD</div>
       <div class="form__foot"><button class="form__btn btn" type="submit" data-fancybox-close>DONE</button></div>
     </form>
-    });*/
+    });
         });
-    </script>
+      -->
 </head>
-
 <body>
     <div class="page">
         <header class="header">
