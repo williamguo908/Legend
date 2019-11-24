@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var NewStudent = require('../../dbs/UserModel.js');
 const { validationResult } = require('express-validator');
 
+
 module.exports = (req, res, next) => {
   var newStudent = new NewStudent();
   console.log("Validating data from add student form..");

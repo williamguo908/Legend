@@ -32,7 +32,6 @@ admin.get("/student-added", (req, res)=> {
     res.sendFile(__dirname + "/student-added.html");
 });
 
-
 admin.get("/class-list", classes); //for demo purposes
 admin.get("/attendance/:className", classList);
 admin.get("/students-list", students); //for demo purposes
